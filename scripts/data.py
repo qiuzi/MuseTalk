@@ -19,7 +19,7 @@ from musetalk.utils.blending import get_image
 from musetalk.utils.utils import load_all_model
 import shutil
 import gc
-
+from train_codes.hparams import *
 # load model weights
 audio_processor, vae, unet, pe = load_all_model()
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -168,7 +168,7 @@ def main(args):
             if ((y2-y1)<=0) or ((x2-x1)<=0):
                 continue
             crop_frame = frame[y1:y2, x1:x2]
-            crop_frame = cv2.resize(crop_frame,(256,256),interpolation = cv2.INTER_LANCZOS4)
+            crop_frame = cv2.resize(crop_frame,(RESIZED_IMG,RESIZED_IMG),interpolation = cv2.INTER_LANCZOS4)
             latents = vae.get_latents_for_unet(crop_frame)
             crop_data.append(crop_frame)
             input_latent_list.append(latents)
