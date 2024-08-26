@@ -6,13 +6,13 @@ import cv2
 import numpy as np
 from PIL import Image
 import os
-
+from train_codes.hparams import *
 class VAE():
     """
     VAE (Variational Autoencoder) class for image processing.
     """
 
-    def __init__(self, model_path="./models/sd-vae-ft-mse/", resized_img=256, use_float16=False):
+    def __init__(self, model_path="./models/sd-vae-ft-mse/", resized_img=RESIZED_IMG, use_float16=False):
         """
         Initialize the VAE instance.
 
