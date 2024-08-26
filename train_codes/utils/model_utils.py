@@ -17,7 +17,7 @@ from torch import Tensor, nn
 import logging
 import json
 
-RESIZED_IMG = 256
+from hparams import *
 
 class PositionalEncoding(nn.Module):
     """
