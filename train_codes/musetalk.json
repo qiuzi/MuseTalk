@@ -1,8 +1,8 @@
 {
   "_class_name": "UNet2DConditionModel",
   "_diffusers_version": "0.6.0.dev0",
-  "act_fn": "silu",
-  "attention_head_dim": 8,
+  "act_fn": "mish",
+  "attention_head_dim": 16,
   "block_out_channels": [
     320,
     640,
@@ -21,7 +21,7 @@
   "flip_sin_to_cos": true,
   "freq_shift": 0,
   "in_channels": 8,
-  "layers_per_block": 2,
+  "layers_per_block": 3,
   "mid_block_scale_factor": 1,
   "norm_eps": 1e-05,
   "norm_num_groups": 32,
