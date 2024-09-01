@@ -8,7 +8,7 @@ import glob
 import pickle
 from tqdm import tqdm
 import copy
-
+from train_codes.hparams import *
 from musetalk.utils.utils import get_file_type,get_video_fps,datagen
 from musetalk.utils.preprocessing import get_landmark_and_bbox,read_imgs,coord_placeholder
 from musetalk.utils.blending import get_image
@@ -87,7 +87,7 @@ def main(args):
                 continue
             x1, y1, x2, y2 = bbox
             crop_frame = frame[y1:y2, x1:x2]
-            crop_frame = cv2.resize(crop_frame,(256,256),interpolation = cv2.INTER_LANCZOS4)
+            crop_frame = cv2.resize(crop_frame,(RESIZED_IMG,RESIZED_IMG),interpolation = cv2.INTER_LANCZOS4)
             latents = vae.get_latents_for_unet(crop_frame)
             input_latent_list.append(latents)
     
