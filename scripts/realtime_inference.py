@@ -15,7 +15,7 @@ from musetalk.utils.preprocessing import get_landmark_and_bbox,read_imgs,coord_p
 from musetalk.utils.blending import get_image,get_image_prepare_material,get_image_blending
 from musetalk.utils.utils import load_all_model
 import shutil
-
+from train_codes.hparams import *
 import threading
 import queue
 
@@ -160,7 +160,7 @@ class Avatar:
                 continue
             x1, y1, x2, y2 = bbox
             crop_frame = frame[y1:y2, x1:x2]
-            resized_crop_frame = cv2.resize(crop_frame,(256,256),interpolation = cv2.INTER_LANCZOS4)
+            resized_crop_frame = cv2.resize(crop_frame,(RESIZED_IMG,RESIZED_IMG),interpolation = cv2.INTER_LANCZOS4)
             latents = vae.get_latents_for_unet(resized_crop_frame)
             input_latent_list.append(latents)
 
