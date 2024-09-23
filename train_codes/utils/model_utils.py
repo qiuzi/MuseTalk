@@ -112,11 +112,11 @@ def validation(vae: torch.nn.Module,
 
             image_pred = unet_copy(latent_model_input, timesteps, encoder_hidden_states = audio_feature).sample
 
-            image = Image.new('RGB', (RESIZED_IMG*4, RESIZED_IMG))
+            image = Image.new('RGB', (256*4, 256))
             image.paste(decode_latents(vae_fp32,masked_latents), (0, 0))
-            image.paste(decode_latents(vae_fp32, ref_latents), (RESIZED_IMG, 0))
-            image.paste(decode_latents(vae_fp32, latents), (RESIZED_IMG*2, 0))
-            image.paste(decode_latents(vae_fp32, image_pred), (RESIZED_IMG*3, 0))
+            image.paste(decode_latents(vae_fp32, ref_latents), (256, 0))
+            image.paste(decode_latents(vae_fp32, latents), (256*2, 0))
+            image.paste(decode_latents(vae_fp32, image_pred), (256*3, 0))
 
             val_img_dir = f"images/{output_dir}/{global_step}"
             if not os.path.exists(val_img_dir):
