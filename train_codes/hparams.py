@@ -1,2 +1,2 @@
 syncnet_T = 1
-RESIZED_IMG = 256
+RESIZED_IMG = 512
